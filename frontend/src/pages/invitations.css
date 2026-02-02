@@ -1,0 +1,265 @@
+/* Container Fade In */
+.invitations-container {
+  width: 100%;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* --- Header --- */
+.ri-header {
+  margin-bottom: 24px;
+}
+
+.ri-header h3 {
+  font-size: 1.25rem;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.ri-header p {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 4px 0 0 0;
+}
+
+/* --- Loading & Empty States --- */
+.ri-loading {
+    text-align: center;
+    padding-top: 40px;
+    color: #ef4444;
+}
+
+/* Reuse the spinner from discoverrooms.css if global, or redefine here */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #ef4444;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    animation: spin 1s linear infinite;
+}
+
+.ri-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #1e1e2e;
+  border-radius: 12px;
+  border: 1px dashed #2d2d3f;
+  color: #94a3b8;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+/* --- Grid Layout --- */
+.ri-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* --- Card Styling --- */
+.ri-card {
+  background-color: #1e1e2e;
+  border: 1px solid #2d2d3f;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  min-height: 220px;
+}
+
+/* Card Hover: Crimson Glow */
+.ri-card:hover {
+  transform: translateY(-5px);
+  border-color: #ef4444;
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.15);
+}
+
+.ri-card-body {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.ri-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.ri-card-title {
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin: 8px 0 12px 0;
+    font-weight: 700;
+}
+
+.ri-card-desc {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    /* Truncate text */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* --- Actions Buttons --- */
+.ri-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.ri-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+/* Accept Button: Crimson Gradient (Primary Theme) */
+.ri-btn-accept {
+    background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.ri-btn-accept:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.5);
+}
+
+/* Decline Button: Transparent with Dark Border */
+.ri-btn-decline {
+    background-color: transparent;
+    border: 1px solid #475569;
+    color: #94a3b8;
+}
+
+.ri-btn-decline:hover {
+    border-color: #cbd5e1;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Animation */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- Toast Notification --- */
+.ri-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  padding: 14px 24px;
+  background-color: #1e1e2e; /* Dark Navy */
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-size: 0.95rem;
+  font-weight: 500;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: slideInToast 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-left: 4px solid;
+}
+
+/* Variant Colors */
+.ri-toast.success { border-left-color: #10b981; }
+.ri-toast.error { border-left-color: #ef4444; }
+.ri-toast.default { border-left-color: #64748b; }
+
+@keyframes slideInToast {
+  from { opacity: 0; transform: translateY(-20px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* --- 📱 MOBILE RESPONSIVENESS --- */
+/* =========================================
+   MOBILE INVITATIONS OPTIMIZATION (Paste at bottom)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+
+  /* 1. Header Cleanup */
+  .ri-header {
+    text-align: center !important;
+    margin-bottom: 20px !important;
+  }
+
+  .ri-header h3 {
+    font-size: 1.5rem !important;
+  }
+
+  .ri-header p {
+    font-size: 0.9rem !important;
+  }
+
+  /* 2. Force Single Column Grid */
+  .ri-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  /* 3. Card Optimization */
+  .ri-card {
+    padding: 16px !important; /* Reduce padding from 24px */
+    min-height: auto !important; /* Allow height to fit content */
+    border-radius: 12px !important;
+    /* Disable hover lift on mobile */
+    transform: none !important; 
+    box-shadow: none !important;
+  }
+
+  .ri-card-body {
+    margin-bottom: 15px !important;
+  }
+
+  .ri-label {
+    font-size: 0.7rem !important;
+  }
+
+  .ri-card-title {
+    font-size: 1.1rem !important;
+    margin: 6px 0 10px !important;
+  }
+
+  .ri-card-desc {
+    font-size: 0.85rem !important;
+    -webkit-line-clamp: 3 !important; /* Show 3 lines max */
+  }
+
+  /* 4. Action Buttons (Big & Tappable) */
+  .ri-actions {
+    gap: 10px !important;
+  }
+
+  .ri-btn {
+    padding: 12px !important; /* Taller touch target */
+    font-size: 0.95rem !important;
+  }
+
+  /* 5. Center the Toast Notification */
+  .ri-toast {
+    width: 90% !important;
+    left: 5% !important;
+    right: auto !important;
+    top: 20px !important;
+    justify-content: center !important;
+    font-size: 0.9rem !important;
+  }
+}

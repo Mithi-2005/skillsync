@@ -1,0 +1,217 @@
+/* Container Animation */
+.my-rooms-container {
+  width: 100%;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* --- Header --- */
+.mr-header {
+  margin-bottom: 24px;
+}
+
+.mr-header h3 {
+  font-size: 1.25rem;
+  color: #e2e8f0; /* Light whitish grey */
+  margin: 0;
+}
+
+.mr-header p {
+  color: #64748b; /* Muted grey */
+  font-size: 0.9rem;
+  margin: 4px 0 0 0;
+}
+
+/* --- Grid Layout --- */
+.mr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* --- Empty State --- */
+.mr-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #1e1e2e;
+  border-radius: 12px;
+  border: 1px dashed #2d2d3f;
+  color: #94a3b8;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+/* --- Card Styling --- */
+.mr-card {
+  background-color: #1e1e2e; /* Dark Card Bg */
+  border: 1px solid #2d2d3f;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 200px;
+}
+
+/* Hover Effect: Red Border & Lift */
+.mr-card:hover {
+  transform: translateY(-5px);
+  border-color: #ef4444; /* Crimson Red Border */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* 1. Top Section: Badges */
+.mr-card-top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.role-badge {
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Specific Badge Colors */
+.role-badge.admin {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%); /* Crimson Gradient */
+  color: white;
+  box-shadow: 0 2px 10px rgba(220, 38, 38, 0.3);
+}
+
+.role-badge.member {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #60a5fa; /* Light Blue */
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.role-badge.applicant {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #fbbf24; /* Amber/Yellow */
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* 2. Content Section */
+.mr-card-content {
+  flex-grow: 1;
+}
+
+.mr-card-content h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+}
+
+.mr-card-content p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+  
+  /* Text Truncation */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 3. Footer Section */
+.mr-card-footer {
+  padding-top: 16px;
+  border-top: 1px solid #2d2d3f;
+  font-size: 0.85rem;
+}
+
+.mr-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mr-status-row .label {
+  color: #64748b;
+}
+
+.status-text {
+  font-weight: 600;
+}
+
+.status-text.open, .status-text.active { color: #10b981; } /* Green */
+.status-text.closed { color: #ef4444; } /* Red */
+.status-text.pending { color: #fbbf24; } /* Yellow */
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- 📱 MOBILE RESPONSIVENESS --- */
+/* =========================================
+   MOBILE MY ROOMS OPTIMIZATION (Paste at bottom)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+
+  /* 1. Header Cleanup */
+  .mr-header {
+    text-align: center !important;
+    margin-bottom: 20px !important;
+  }
+
+  .mr-header h3 {
+    font-size: 1.5rem !important;
+  }
+
+  /* 2. Force Single Column Grid */
+  .mr-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  /* 3. Card Optimization */
+  .mr-card {
+    padding: 16px !important; /* Compact padding */
+    min-height: auto !important; /* Let height adapt to content */
+    border-radius: 12px !important;
+    
+    /* Disable Hover Effects on Touch */
+    transform: none !important; 
+    box-shadow: none !important;
+  }
+
+  /* 4. Content Sizing */
+  .mr-card-content h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 6px !important;
+  }
+
+  .mr-card-content p {
+    font-size: 0.85rem !important;
+    margin-bottom: 12px !important;
+    -webkit-line-clamp: 2 !important; /* Keep descriptions short */
+  }
+
+  /* 5. Badge & Footer Tweaks */
+  .role-badge {
+    font-size: 0.65rem !important;
+    padding: 4px 10px !important;
+  }
+
+  .mr-card-footer {
+    padding-top: 12px !important;
+    font-size: 0.8rem !important;
+  }
+}

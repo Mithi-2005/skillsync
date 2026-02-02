@@ -1,0 +1,170 @@
+/* --- Glass Navbar Container --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+    /* FIX: Dark Background with Blur */
+    background: rgba(15, 12, 41, 0.85) !important; 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    transition: padding 0.3s ease;
+}
+
+/* --- Logo Styling --- */
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    /* Gradient Text Effect */
+    background: linear-gradient(90deg, #fff, #a0a0a0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- Navigation Links --- */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link {
+    color: #e0e0e0; /* Light Grey */
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    white-space: nowrap; /* Prevent text wrapping inside link */
+}
+
+/* Hover Effect: Turns bright white */
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Underline Animation */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #e94560; /* Pink Accent */
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* --- Logout Button --- */
+.btn-logout {
+    padding: 8px 20px;
+    background: transparent;
+    border: 2px solid #e94560;
+    color: #e94560;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-logout:hover {
+    background: #e94560;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
+    transform: translateY(-2px);
+}
+
+/* --- Special 'Get Started' Button for Guests --- */
+.btn-highlight {
+    padding: 8px 25px;
+    background: #e94560; /* The Pink Accent */
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4); /* Nice Glow */
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-highlight:hover {
+    background: #ff5e78;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+}
+
+/* --- 📱 MOBILE RESPONSIVENESS --- */
+
+/* Tablets & Small Laptops (Max-width: 900px) */
+@media (max-width: 900px) {
+    .navbar {
+        padding: 15px 30px;
+    }
+    
+    .navbar-right {
+        gap: 20px;
+    }
+}
+
+/* Mobile Phones (Max-width: 650px) */
+/* =========================================
+   MOBILE NAVBAR OPTIMIZATION (Paste at bottom)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+  
+  /* 1. Force Horizontal Layout (Don't stack!) */
+  .navbar {
+    flex-direction: row !important; /* Keep items side-by-side */
+    justify-content: space-between !important;
+    padding: 10px 15px !important; /* Slimmer padding */
+    height: 60px !important; /* Fixed compact height */
+    gap: 0 !important;
+  }
+
+  /* 2. Shrink Logo */
+  .logo {
+    font-size: 1.2rem !important;
+    white-space: nowrap;
+  }
+
+  /* 3. Squash the Links together */
+  .navbar-right {
+    gap: 8px !important; /* Reduce gap between links */
+    width: auto !important; /* Don't take full width */
+  }
+
+  /* 4. Make Link Text Tiny but Readable */
+  .nav-link {
+    font-size: 0.75rem !important; /* Small text */
+    padding: 4px !important;
+  }
+
+  /* 5. Compact Buttons */
+  .btn-logout, .btn-highlight {
+    padding: 6px 12px !important;
+    font-size: 0.75rem !important;
+    border-width: 1px !important; /* Thinner border */
+  }
+
+  /* Optional: If it's STILL too crowded, hide the word "Home" on mobile 
+     and rely on the Logo for Home. Uncomment below if needed: */
+  /* a[href="/"] { display: none; } 
+  */
+}

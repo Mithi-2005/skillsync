@@ -1,0 +1,316 @@
+/* Layout Wrapper */
+.cr-layout-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  
+  /* 🟢 Transparent so the global rich background shows */
+  background: transparent;
+  
+  min-height: 100vh;
+}
+
+.cr-container {
+  width: 100%;
+  max-width: 700px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Header */
+.cr-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.cr-header h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+
+.cr-header p {
+  color: #94a3b8;
+  margin-top: 8px;
+}
+
+/* New Post Button Area (Glass Style) */
+.cr-new-post-box {
+    /* 🟢 Glass Effect */
+    background: rgba(30, 30, 46, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.cr-new-post-box p {
+    color: #cbd5e1;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.cr-btn-outline {
+    background: transparent;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cr-btn-outline:hover {
+    background: rgba(239, 68, 68, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Divider */
+.cr-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 32px;
+    color: #94a3b8; /* Slightly lighter for better contrast */
+}
+
+.cr-divider::before, .cr-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cr-divider span {
+    padding: 0 15px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* Posts Grid & Cards */
+.cr-posts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cr-select-card {
+    /* 🟢 Glass Effect */
+    background: rgba(30, 30, 46, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.card-accent {
+    width: 4px;
+    background-color: transparent;
+    transition: background-color 0.2s;
+}
+
+.card-content {
+    padding: 20px;
+    flex: 1;
+}
+
+.cr-select-card:hover {
+    transform: translateX(5px);
+    border-color: rgba(239, 68, 68, 0.5);
+    background-color: rgba(37, 37, 56, 0.8);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.cr-select-card:hover .card-accent {
+    background-color: #ef4444;
+}
+
+.card-content h4 {
+    color: #fff;
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+}
+
+.card-content p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin: 0 0 16px 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-footer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.select-action {
+    color: #ef4444;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.cr-select-card:hover .select-action {
+    opacity: 1;
+}
+
+/* Empty State */
+.cr-empty {
+    text-align: center;
+    padding: 40px;
+    
+    /* 🟢 Glass Effect */
+    background: rgba(30, 30, 46, 0.5);
+    backdrop-filter: blur(10px);
+    
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #64748b;
+}
+
+.empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
+
+/* Loading */
+.spinner-cr {
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(239, 68, 68, 0.2);
+    border-top-color: #ef4444;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    animation: spin 1s linear infinite;
+}
+
+/* --- Toast --- */
+.cr-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  padding: 14px 24px;
+  background-color: #1e1e2e;
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 4px solid;
+  animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cr-toast.success { border-left-color: #10b981; }
+.cr-toast.error { border-left-color: #ef4444; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes slideIn { from { transform: translateX(50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* --- 📱 MOBILE RESPONSIVENESS --- */
+/* =========================================
+   MOBILE CREATE ROOM OPTIMIZATION (Paste at bottom)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+
+  /* 1. Layout Reset */
+  .cr-layout-wrapper {
+    padding: 15px 10px !important; /* Tighten outer padding */
+    align-items: flex-start !important;
+  }
+
+  .cr-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 2. Compact Header */
+  .cr-header {
+    margin-bottom: 20px !important;
+  }
+
+  .cr-header h2 {
+    font-size: 1.6rem !important; /* Smaller Title */
+  }
+
+  .cr-header p {
+    font-size: 0.9rem !important;
+    padding: 0 10px !important; /* prevent edge touching */
+  }
+
+  /* 3. New Post Box (Glass Box) */
+  .cr-new-post-box {
+    padding: 16px !important;
+    margin-bottom: 25px !important;
+  }
+
+  .cr-btn-outline {
+    width: 100% !important; /* Full width button is easier to tap */
+    justify-content: center !important;
+    padding: 12px !important;
+  }
+
+  /* 4. Card Optimization */
+  .cr-posts-grid {
+    gap: 12px !important;
+  }
+
+  .cr-select-card {
+    border-radius: 12px !important;
+    /* Disable hover slide on touch */
+    transform: none !important; 
+  }
+
+  .card-content {
+    padding: 16px !important; /* Reduce padding inside cards */
+  }
+
+  .card-content h4 {
+    font-size: 1rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .card-content p {
+    font-size: 0.85rem !important;
+    margin-bottom: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* 5. Force "Select" Action to be Visible */
+  /* On mobile, we can't 'hover', so we show the text always */
+  .select-action {
+    opacity: 1 !important; 
+    font-size: 0.75rem !important;
+  }
+
+  /* 6. Toast Notification Center */
+  .cr-toast {
+    width: 90% !important;
+    left: 5% !important; /* Center it manually */
+    right: auto !important;
+    top: 20px !important;
+    justify-content: center !important;
+  }
+}

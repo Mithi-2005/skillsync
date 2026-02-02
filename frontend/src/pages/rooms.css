@@ -1,0 +1,190 @@
+/* rooms.css - Crimson Theme */
+
+.rooms-layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  padding: 32px 40px;
+  
+  /* 🟢 Transparent so the global rich background shows */
+  background: transparent;
+  
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+.rooms-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.header-text h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  /* White to Light Red/Grey Gradient */
+  background: linear-gradient(90deg, #ffffff, #fca5a5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.header-subtitle {
+  margin: 6px 0 0 0;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* FAB - Red Gradient */
+.fab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  /* Crimson Gradient */
+  background: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fab:hover {
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6);
+}
+
+.fab-icon {
+  margin-top: -4px;
+}
+
+.rooms-tabs {
+  display: flex;
+  gap: 40px;
+  
+  /* 🟢 Lighter, semi-transparent border for the rich background */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+.tab {
+  position: relative;
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 500;
+  padding-bottom: 16px;
+  font-size: 1.05rem;
+  transition: color 0.3s ease;
+  white-space: nowrap; /* Prevent wrapping on mobile */
+}
+
+.tab:hover {
+  color: #cbd5e1;
+}
+
+.tab.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Active Tab Underline - Red */
+.tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  /* Red Gradient Line */
+  background: linear-gradient(90deg, #dc2626, #fca5a5);
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 -2px 10px rgba(220, 38, 38, 0.5);
+}
+
+.rooms-content-area {
+  flex-grow: 1;
+  width: 100%;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 📱 MOBILE RESPONSIVENESS --- */
+/* =========================================
+   MOBILE ROOMS WRAPPER OPTIMIZATION (Paste at bottom)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+
+  /* 1. Reset Container Padding */
+  .rooms-layout-wrapper {
+    padding: 15px 10px !important; /* Tighten up the edges */
+    min-height: auto !important; /* Allow height to fit content */
+  }
+
+  /* 2. Header & FAB Layout */
+  .rooms-header {
+    margin-bottom: 20px !important;
+    gap: 15px !important;
+  }
+
+  .header-text h2 {
+    font-size: 1.8rem !important; /* Smaller Title */
+  }
+
+  .header-subtitle {
+    font-size: 0.9rem !important;
+  }
+
+  /* 3. Floating Action Button (FAB) */
+  .fab {
+    width: 45px !important;
+    height: 45px !important;
+    font-size: 24px !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.5) !important;
+  }
+
+  /* 4. Scrollable Tabs (Instagram Style) */
+  .rooms-tabs {
+    gap: 25px !important;
+    margin-bottom: 25px !important;
+    
+    /* Enable smooth horizontal scrolling */
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    display: flex !important;
+    
+    /* Hide Scrollbar for cleaner look */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .rooms-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    font-size: 0.95rem !important;
+    padding-bottom: 10px !important;
+    flex-shrink: 0 !important; /* Prevent tabs from shrinking */
+  }
+
+  /* 5. Active Tab Line adjustment */
+  .tab.active::after {
+    height: 2px !important; /* Thinner line for mobile */
+  }
+}

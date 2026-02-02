@@ -1,0 +1,295 @@
+/* src/index.css */
+
+/* --- Global Reset & Fonts --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* --- Global Body Styles (THE RICH BACKGROUND) --- */
+body {
+  margin: 0;
+  padding: 0;
+  /* Deep Dark Background */
+  background-color: #070b14;
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevents scrollbars from the blobs */
+  position: relative;
+}
+
+/* --- 🟢 GLOBAL AURORA ORBS (Applied to Body now) --- */
+body::before, body::after {
+  content: '';
+  position: fixed; /* Fixed so they stay in place while you scroll */
+  border-radius: 50%;
+  z-index: -1; /* Behind everything */
+  opacity: 0.4;
+  will-change: transform;
+  filter: blur(80px); /* Soft glow */
+}
+
+/* Crimson Orb (Top Left) */
+body::before {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #ef4444 0%, transparent 70%);
+  top: -100px; left: -100px;
+  animation: floatOrb 10s infinite alternate ease-in-out;
+}
+
+/* Dark Red Orb (Bottom Right) */
+body::after {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #7f1d1d 0%, transparent 70%);
+  bottom: -100px; right: -100px;
+  animation: floatOrb 15s infinite alternate ease-in-out reverse;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(30px, 30px, 0); }
+}
+
+/* --- Page Container (For Login/Signup centering) --- */
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  /* Removed specific backgrounds here since Body handles it now */
+}
+
+/* --- The Premium Glass Card (Global Style) --- */
+.glass-card {
+  background: rgba(15, 23, 42, 0.6); 
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 48px 40px;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+/* --- Typography & Inputs --- */
+.title {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.subtitle {
+  color: #94a3b8; font-size: 0.95rem; margin-bottom: 32px;
+}
+
+.input-group { margin-bottom: 20px; text-align: left; position: relative; }
+
+.input-group input {
+  width: 100%; padding: 14px 16px;
+  background: rgba(0, 0, 0, 0.3); 
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #fff; outline: none; transition: 0.3s;
+}
+
+.input-group input:focus {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: #ef4444; 
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 15px;      /* Distance from right edge */
+  top: 50%;         /* Center vertically */
+  transform: translateY(-50%); /* Perfect center alignment */
+  cursor: pointer;
+  color: #94a3b8;   /* Slate grey by default */
+  font-size: 1.2rem;
+  z-index: 10;      /* Ensure it sits on top of the text */
+  transition: color 0.2s;
+  display: flex;    /* Ensures SVG aligns correctly */
+  align-items: center;
+}
+
+.password-toggle-icon:hover {
+  color: #ef4444; /* Glow Crimson on hover */
+}
+
+.btn-glow {
+  width: 100%; padding: 14px; margin-top: 10px;
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+  color: white; border: none; border-radius: 12px;
+  font-size: 1rem; font-weight: 700; cursor: pointer;
+  transition: 0.3s; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+.btn-glow:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5); }
+
+.footer-text { margin-top: 24px; color: #94a3b8; font-size: 0.9rem; }
+.link { color: #ef4444; text-decoration: none; font-weight: 600; }
+.link:hover { text-decoration: underline; }
+
+/* Back Button */
+.back-home-btn {
+    position: absolute; top: 30px; left: 40px;
+    text-decoration: none; color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem; font-weight: 600;
+    padding: 10px 20px; background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 30px;
+    backdrop-filter: blur(5px); transition: 0.3s; z-index: 10;
+}
+.back-home-btn:hover { background: rgba(239, 68, 68, 0.15); border-color: #ef4444; color: white; }
+
+/* --- Custom Scrollbar (The Cherry on Top) --- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #070b14; /* Matches body background */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155; /* Dark Grey */
+    border-radius: 5px;
+    border: 2px solid #070b14; /* Creates padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ef4444; /* Turns Crimson on hover */
+}
+/* --- Custom Text Selection --- */
+::selection {
+    background: rgba(239, 68, 68, 0.3); /* Crimson tint */
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+}
+
+/* --- Premium SweetAlert Customization --- */
+
+/* The Glass Container */
+div:where(.swal2-container) div:where(.swal2-popup) {
+    background: rgba(26, 26, 36, 0.85) !important; /* Dark Glass */
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(239, 68, 68, 0.2) !important; /* Subtle Crimson Border */
+    border-radius: 24px !important;
+    padding: 30px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* The Title */
+div:where(.swal2-container) h2:where(.swal2-title) {
+    color: #ffffff !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 1.8rem !important;
+    margin-bottom: 10px !important;
+}
+
+/* The Text/Content */
+div:where(.swal2-container) div:where(.swal2-html-container) {
+    color: #94a3b8 !important; /* Slate grey text */
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+}
+
+/* The Icon (Make it Crimson instead of Blue) */
+div:where(.swal2-icon).swal2-info {
+    border-color: #ef4444 !important; /* Crimson Ring */
+    color: #ef4444 !important;        /* Crimson 'i' */
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.2) inset !important;
+}
+
+/* The Confirm Button */
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    padding: 12px 32px !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3) !important;
+    border: none !important;
+    outline: none !important;
+    transition: transform 0.2s !important;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 15px 35px rgba(239, 68, 68, 0.5) !important;
+}
+
+/* =========================================
+   AGGRESSIVE MOBILE FIX (Paste at bottom of src/index.css)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+
+  /* 1. Force the Card to be Compact */
+  .glass-card {
+    width: 90% !important;        /* Leave space on sides */
+    max-width: none !important;
+    padding: 24px 20px !important; /* Force much smaller internal padding */
+    margin-top: 20px !important;   /* Pull it up closer to the navbar */
+    border-radius: 20px !important;
+  }
+
+  /* 2. Shrink the Big Text */
+  .title {
+    font-size: 1.5rem !important; /* Smaller "Welcome Back" */
+    margin-bottom: 8px !important;
+  }
+  
+  .subtitle {
+    font-size: 0.85rem !important;
+    margin-bottom: 20px !important; /* Less gap before inputs */
+  }
+
+  /* 3. Make Inputs Slimmer */
+  .input-group {
+    margin-bottom: 12px !important; /* Less gap between inputs */
+  }
+
+  .input-group input {
+    padding: 10px 14px !important; /* Slimmer inputs */
+    font-size: 16px !important;    /* Prevent zoom but keep readable */
+    height: 44px !important;       /* Standard mobile touch height */
+  }
+
+  /* 4. Fix the Button */
+  .btn-glow {
+    padding: 12px !important;
+    font-size: 0.95rem !important;
+    margin-top: 5px !important;
+  }
+
+  /* 5. Clean up the Navbar on Mobile (It's too crowded) */
+  /* This hides the text links 'Home' and 'Login' on mobile to save space */
+  .landing-nav a { 
+    display: none !important; 
+  }
+  
+  /* But keep the Logo visible */
+  .landing-logo {
+    display: block !important;
+    font-size: 1.4rem !important;
+  }
+  
+  /* (Optional) Keep 'Get Started' button if you want, or hide it too */
+  /* If you want to keep the button, remove the 'display: none' line below */
+  .landing-nav .btn-login-glass {
+    display: none !important; 
+  }
+  
+  /* Center the Nav content since links are gone */
+  .landing-nav {
+    justify-content: center !important; 
+  }
+}

@@ -1,0 +1,398 @@
+/* --- 1. Main Page Layout --- */
+.create-post-layout {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+    /* 🟢 Transparent so global background shows */
+    background: transparent; 
+    min-height: 100vh;
+}
+
+.create-post-container {
+    width: 100%;
+    max-width: 650px;
+    
+    /* 🟢 Premium Glass Effect */
+    background: rgba(26, 26, 36, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: cpFadeIn 0.6s ease-out;
+}
+
+@keyframes cpFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 2. Header Section --- */
+.cp-header {
+    margin-bottom: 35px;
+    text-align: left;
+}
+
+.cp-header h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.cp-header p {
+    color: #94a3b8;
+    margin-top: 8px;
+    font-size: 0.95rem;
+}
+
+/* --- 3. Form Groups & Inputs --- */
+.cp-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex: 1;
+}
+
+.cp-crimson-label {
+    color: #ef4444; /* Primary Crimson */
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.cp-glass-input {
+    background: rgba(0, 0, 0, 0.2); /* Darker input bg for contrast */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+    padding: 14px 18px;
+    border-radius: 12px;
+    outline: none;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cp-glass-input:focus {
+    border-color: #ef4444;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.15);
+}
+
+.cp-textarea {
+    min-height: 140px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.cp-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* --- 4. Custom Dropdown (No Browser GUI) --- */
+.custom-scope-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.scope-trigger {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: #cbd5e1;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.scope-trigger:hover, .scope-trigger.active {
+    border-color: #ef4444;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.scope-arrow {
+    font-size: 0.65rem;
+    color: #ef4444;
+    transition: transform 0.3s ease;
+}
+
+.scope-trigger.active .scope-arrow {
+    transform: rotate(180deg);
+}
+
+.scope-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    /* Solid dark background for dropdown readability */
+    background: #1a1a24;
+    border: 1px solid #2d2d3f;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    overflow: hidden;
+    animation: cpDropIn 0.2s ease-out;
+}
+
+@keyframes cpDropIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.scope-option {
+    padding: 14px 16px;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.scope-option:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #fff;
+}
+
+.scope-option.selected {
+    color: #ef4444;
+    font-weight: 700;
+    background: rgba(239, 68, 68, 0.03);
+}
+
+/* --- 5. File Upload Area --- */
+.file-drop-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.01);
+    transition: all 0.3s ease;
+}
+
+.file-drop-zone:hover {
+    background-color: rgba(239, 68, 68, 0.03);
+    border-color: #ef4444;
+}
+
+.upload-icon { font-size: 2rem; margin-bottom: 10px; }
+.upload-text { color: #f1f5f9; font-weight: 700; }
+.upload-hint { color: #64748b; font-size: 0.8rem; margin-top: 5px; }
+
+.cp-file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px 16px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cp-file-item button {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* --- 6. Toggle Switch Area --- */
+.cp-toggle-area {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 16px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cp-checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.toggle-text strong { color: #fff; font-size: 1.05rem; }
+.toggle-text span { color: #94a3b8; font-size: 0.85rem; margin-top: 4px; display: block; }
+
+/* --- 7. Submit Button --- */
+.cp-submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg, #b91c1c 0%, #ef4444 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.2);
+}
+
+.cp-submit-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(239, 68, 68, 0.4);
+}
+
+.cp-submit-btn:disabled {
+    background: #2d2d3f;
+    color: #64748b;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* --- 8. Toast --- */
+.cp-toast {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    padding: 16px 28px;
+    background-color: #1a1a24;
+    color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-left: 5px solid;
+}
+
+.cp-toast.success { border-left-color: #10b981; }
+.cp-toast.error { border-left-color: #ef4444; }
+
+/* --- Announcements Adjustment --- */
+.actions-group {
+    display: flex;
+    gap: 12px;
+}
+
+/* Ensure form doesn't clip dropdowns */
+.cp-card, .create-post-container {
+    overflow: visible;
+}
+
+.cp-hint-text {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-top: 6px;
+    font-style: italic;
+}
+
+/* Ensure Team Size input doesn't look like browser default */
+input[type="number"]::-webkit-inner-spin-button {
+    opacity: 1;
+    filter: invert(1); 
+}
+
+/* --- 📱 MOBILE RESPONSIVENESS --- */
+/* =========================================
+   MOBILE CREATE POST OPTIMIZATION (Paste at bottom)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+
+  /* 1. Layout Reset (Remove huge gaps) */
+  .create-post-layout {
+    padding: 10px 10px !important; /* Minimal outer padding */
+    align-items: flex-start !important; /* Start from top */
+  }
+
+  /* 2. Slim Down the Main Card */
+  .create-post-container {
+    padding: 20px 15px !important; /* Reduce internal padding */
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important; /* Remove heavy shadow */
+    border: none !important;
+    background: rgba(26, 26, 36, 0.9) !important; /* Darker background */
+  }
+
+  /* 3. Compact Header */
+  .cp-header {
+    margin-bottom: 20px !important;
+    text-align: center !important; /* Center text looks better on mobile form */
+  }
+
+  .cp-header h2 {
+    font-size: 1.5rem !important; /* Smaller Title */
+  }
+
+  .cp-header p {
+    font-size: 0.85rem !important;
+  }
+
+  /* 4. Force Single Column (No Grid) */
+  .cp-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  /* 5. Input Field Optimization */
+  .cp-group {
+    margin-bottom: 15px !important; /* Less gap between fields */
+  }
+
+  .cp-glass-input, .cp-textarea {
+    font-size: 16px !important; /* Prevent Zoom on iPhone */
+    padding: 12px !important;
+    background: rgba(0, 0, 0, 0.3) !important; /* Slightly darker for contrast */
+  }
+
+  .cp-textarea {
+    min-height: 100px !important; /* Shorter default height */
+  }
+
+  /* 6. File Upload Zone */
+  .file-drop-zone {
+    padding: 20px !important;
+    margin-top: 10px !important;
+  }
+  
+  .upload-icon {
+    font-size: 1.5rem !important;
+    margin-bottom: 5px !important;
+  }
+
+  /* 7. Toggle Area */
+  .cp-toggle-area {
+    padding: 15px !important;
+    margin: 15px 0 !important;
+  }
+
+  .toggle-text strong {
+    font-size: 0.95rem !important;
+  }
+  
+  .toggle-text span {
+    font-size: 0.75rem !important;
+  }
+
+  /* 8. Big Thumb-Friendly Submit Button */
+  .cp-submit-btn {
+    padding: 14px !important;
+    font-size: 1rem !important;
+    margin-bottom: 20px !important; /* Add space at bottom of screen */
+    position: relative;
+    bottom: 0;
+  }
+}

@@ -1,0 +1,471 @@
+/* ================================
+   ROOT VARIABLES
+================================ */
+:root {
+  --bg-main: #0b0f1a;
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --text-main: #f4f6ff;
+  --text-muted: #9aa4c7;
+  --accent: #e63946;
+  --accent-soft: rgba(230, 57, 70, 0.15);
+  --success: #3ddc97;
+  --error: #ff5c5c;
+  --blur: blur(18px);
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --transition: all 0.25s ease;
+}
+
+/* ================================
+   PAGE LAYOUT
+================================ */
+.profile-page-layout {
+  min-height: 100vh;
+  /* 🟢 FIX: Transparent so Global Rich Background Shows */
+  background: transparent; 
+  padding: 40px 0;
+  color: var(--text-main);
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.profile-container {
+  max-width: 1280px;
+  margin: auto;
+  padding: 0 24px;
+}
+
+/* ================================
+   GLASS BASE
+================================ */
+.profile-header-glass,
+.stat-card-glass,
+.skills-card-glass {
+  background: rgba(26, 26, 36, 0.6); /* Slightly darker for contrast */
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* ================================
+   PROFILE HEADER
+================================ */
+.profile-header-glass {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 32px;
+  margin-bottom: 36px;
+  position: relative;
+  /* 🟢 FIX: High Z-Index so dropdowns work */
+  z-index: 50; 
+}
+
+.profile-avatar-large {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #e63946, #ff8fa3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: white;
+  position: relative;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.avatar-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: var(--accent);
+  filter: blur(20px);
+  opacity: 0.4;
+  z-index: -1;
+}
+
+.profile-info-main {
+  flex: 1;
+  min-width: 0; /* Prevents text overflow issues */
+}
+
+.profile-display-name {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.profile-display-email {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.profile-college-badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* 🟢 NEW: Resume Upload Button Styling */
+.edit-profile-btn {
+    margin-top: 15px;
+    background: rgba(239, 68, 68, 0.15) !important; 
+    color: #ef4444 !important; 
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edit-profile-btn:hover {
+    background: rgba(239, 68, 68, 0.25) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.2);
+}
+
+/* ================================
+   EDIT / ACTION BUTTONS
+================================ */
+.profile-header-actions button {
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+}
+
+.profile-edit-btn {
+  background: var(--accent);
+  color: white;
+  border: 1px solid var(--accent);
+}
+
+.profile-edit-btn:hover {
+    transform: scale(1.012);
+    transform: translateY(-2px);
+}
+
+.profile-save-btn {
+  background: var(--accent);
+  color: white;
+}
+
+.profile-save-btn:hover {
+  transform: translateY(-2px);
+}
+
+.profile-cancel-btn {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+/* ================================
+   INPUT FIELDS (CUSTOM)
+================================ */
+.profile-edit-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 12px;
+}
+
+.input-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative; /* Anchor for dropdown */
+}
+
+.cp-crimson-label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.profile-glass-input {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--text-main);
+  outline: none;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.profile-glass-input::placeholder {
+  color: var(--text-muted);
+}
+
+.profile-glass-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+/* ================================
+   SEARCHABLE DROPDOWN
+================================ */
+.searchable-dropdown-wrapper {
+  position: relative;
+  z-index: 100; 
+}
+
+.custom-suggestions-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #1a1a24; /* Solid dark bg */
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 9999; 
+  box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+}
+
+.suggestion-item {
+  padding: 14px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: var(--transition);
+  color: #cbd5e1;
+}
+
+.suggestion-item:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--accent);
+}
+
+.suggestion-no-results {
+  padding: 14px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.lock-notice {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* ================================
+   GRID LAYOUT
+================================ */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr; /* Fixed sidebar width */
+  gap: 32px;
+  position: relative;
+  z-index: 1; 
+  align-items: start; /* Align to top */
+}
+
+/* ================================
+   SIDEBAR
+================================ */
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.profile-sidebar > div {
+  padding: 22px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-size: 15px;
+}
+
+.stat-num {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.skill-tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.profile-skill-tag {
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ================================
+   MAIN FEED (The Fix)
+================================ */
+.profile-main-feed {
+    width: 100%; /* Ensure it takes full available width */
+    min-width: 0; /* Prevents Grid blowout */
+}
+
+.feed-header-area {
+  margin-bottom: 24px;
+}
+
+.section-header {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.header-line {
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 3px;
+  margin-top: 8px;
+}
+
+/* 🟢 FIX: Better Grid for Cards */
+.posts-container-grid {
+  display: grid;
+  /* Auto-fill columns, min width 320px */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  
+  /* 🟢 CRITICAL FIX: Prevents cards from stretching to match the tallest one */
+  align-items: start; 
+}
+
+.empty-feed-msg {
+  grid-column: 1 / -1; /* Span full width */
+  padding: 60px;
+  text-align: center;
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.02);
+  border-radius: 20px;
+  border: 1px dashed rgba(255,255,255,0.1);
+}
+
+/* ================================
+   TOAST NOTIFICATIONS
+================================ */
+.cp-toast {
+  position: fixed;
+  top: 24px;              
+  right: 24px;
+  width: max-content;       
+  max-width: 360px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  backdrop-filter: blur(14px);
+  background: #1e1e2e; 
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  z-index: 10000; 
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: toastSlideIn 0.35s ease;
+}
+
+.cp-toast.success {
+  background: rgba(61, 220, 151, 0.18);
+  color: #3ddc97;
+  border-left: 4px solid #3ddc97;
+}
+
+.cp-toast.error {
+  background: rgba(255, 92, 92, 0.18);
+  color: #ff5c5c;
+  border-left: 4px solid #ff5c5c;
+}
+
+@keyframes toastSlideIn {
+  from { transform: translateX(40px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* ================================
+   📱 RESPONSIVE MEDIA QUERIES
+================================ */
+
+/* Tablet & Smaller (Max-width: 900px) */
+@media (max-width: 900px) {
+  .profile-header-glass {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .profile-edit-inputs {
+    grid-template-columns: 1fr; /* Stack inputs */
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr; /* Stack sidebar on top of feed */
+  }
+  
+  .profile-sidebar {
+    order: 0; 
+  }
+}
+
+/* Mobile Phones (Max-width: 500px) */
+@media (max-width: 500px) {
+    .profile-page-layout {
+        padding: 20px 0;
+    }
+    
+    .profile-container {
+        padding: 0 15px;
+    }
+
+    .profile-header-glass {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .profile-avatar-large {
+        width: 80px; height: 80px;
+        font-size: 32px;
+    }
+
+    .profile-display-name {
+        font-size: 22px;
+    }
+
+    .posts-container-grid {
+        grid-template-columns: 1fr; /* Single column posts */
+    }
+
+    /* Adjust Toast for Mobile */
+    .cp-toast {
+        top: 20px;
+        right: 5%;
+        left: 5%;
+        width: 90%;
+        max-width: none;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,278 @@
+/* discoverrooms.css - Crimson Theme */
+
+.discover-container {
+  width: 100%;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.discover-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.dh-text h3 {
+  font-size: 1.25rem;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.dh-text p {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 4px 0 0 0;
+}
+
+/* Join Code Button - Red Outline */
+.btn-join-code {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: 1px solid #ef4444; /* Red Border */
+  color: #ef4444; /* Red Text */
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-join-code:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* Card Styles */
+.discover-card {
+  background-color: #1e1e2e;
+  border: 1px solid #2d2d3f;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 220px;
+}
+
+/* Card Hover - Red Border */
+.discover-card:hover {
+  transform: translateY(-5px);
+  border-color: #ef4444; /* Red Border */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dc-top-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.open {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.status-badge.closed {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.dc-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.dc-body {
+  flex-grow: 1;
+}
+
+.dc-description {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dc-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.skill-tag {
+  font-size: 0.75rem;
+  background-color: #0f172a;
+  color: #cbd5e1;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+}
+
+.skill-tag.more {
+  background-color: transparent;
+  border: 1px dashed #475569;
+}
+
+.dc-footer {
+  padding-top: 16px;
+  border-top: 1px solid #2d2d3f;
+  text-align: right;
+}
+
+/* Link Color - Red */
+.dc-link {
+  font-size: 0.85rem;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.discover-loading, .discover-error {
+  text-align: center;
+  padding: 40px;
+  color: #94a3b8;
+}
+
+/* Spinner - Red */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #ef4444; /* Red Top */
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  animation: spin 1s linear infinite;
+}
+
+.rooms-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #1e1e2e;
+  border-radius: 12px;
+  border: 1px dashed #2d2d3f;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* --- 📱 MOBILE RESPONSIVENESS --- */
+
+/* =========================================
+   MOBILE DISCOVER ROOMS OPTIMIZATION (Paste at bottom)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+  
+  /* 1. Header Cleanup */
+  .discover-header-row {
+    flex-direction: column !important;
+    align-items: stretch !important; /* Full width items */
+    gap: 15px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .dh-text h3 {
+    font-size: 1.5rem !important;
+    text-align: center;
+  }
+
+  .dh-text p {
+    text-align: center;
+    font-size: 0.9rem !important;
+  }
+
+  /* 2. Big "Join Code" Button */
+  .btn-join-code {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 14px !important;
+    font-size: 1rem !important;
+    margin-top: 5px !important;
+  }
+
+  /* 3. Force Single Column Grid */
+  .rooms-grid {
+    grid-template-columns: 1fr !important; /* 1 card per row */
+    gap: 15px !important;
+  }
+
+  /* 4. Card Optimization */
+  .discover-card {
+    min-height: auto !important; /* Let height fit content */
+    padding: 16px !important;
+    border-radius: 12px !important;
+    /* Disable hover lift on mobile */
+    transform: none !important;
+  }
+
+  .dc-title {
+    font-size: 1.1rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .dc-description {
+    font-size: 0.85rem !important;
+    -webkit-line-clamp: 3 !important; /* Show a bit more text */
+  }
+
+  /* 5. Skill Tags (Prevent overflow) */
+  .dc-skills-list {
+    gap: 6px !important;
+  }
+  
+  .skill-tag {
+    font-size: 0.7rem !important;
+    padding: 4px 8px !important;
+  }
+
+  /* 6. Footer Link */
+  .dc-footer {
+    padding-top: 12px !important;
+    text-align: center !important; /* Center the link */
+  }
+
+  .dc-link {
+    font-size: 0.9rem !important;
+    padding: 8px !important; /* Larger tap target */
+    display: block !important;
+  }
+}

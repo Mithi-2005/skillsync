@@ -1,0 +1,209 @@
+/* --- Outer Container --- */
+.rb-outer-card {
+  background-color: #1a1a24;
+  border: 1px solid #2d2d3f;
+  border-radius: 20px;
+  padding: 24px 16px;
+  width: 100%;
+  max-width: 320px; /* Default sidebar width */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.rb-main-label {
+  color: #ef4444; /* Primary Crimson */
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 0 0 16px 8px;
+  text-transform: uppercase;
+}
+
+/* --- Inner Glass Box --- */
+.rb-glass-inner {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+/* --- Skills Header --- */
+.sb-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sb-section-title {
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.sb-total-tag {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* --- Skill Rows --- */
+.sb-skills-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 22px; /* Increased gap for a cleaner look */
+}
+
+.sb-skill-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.sb-skill-name {
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* --- Proficiency Labels (Shades of Red) --- */
+.sb-prof-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.p-expert { color: #ff0000; text-shadow: 0 0 8px rgba(255, 0, 0, 0.3); } /* Pure Red */
+.p-inter { color: #ef4444; } /* Standard Crimson */
+.p-begin { color: #991b1b; } /* Dark Brick Red */
+
+/* --- Progress Bars (Shades of Red) --- */
+.sb-progress-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.sb-progress-glow {
+  height: 100%;
+  border-radius: 10px;
+  position: relative;
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Expert Glow: Brightest Red */
+.sb-progress-glow.p-expert { 
+  background: #ff0000; 
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.6); 
+}
+
+/* Intermediate Glow: Crimson */
+.sb-progress-glow.p-inter { 
+  background: #ef4444; 
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.4); 
+}
+
+/* Beginner Glow: Muted Dark Red */
+.sb-progress-glow.p-begin { 
+  background: #991b1b; 
+  box-shadow: none;
+}
+
+/* --- Upload View (Initial State) --- */
+.rb-premium-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px;
+  background: linear-gradient(90deg, #b91c1c, #ef4444);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.rb-icon-circle { font-size: 2rem; margin-bottom: 10px; text-align: center; }
+.rb-upload-content { text-align: center; }
+.rb-upload-content h3 { color: white; margin: 0; font-size: 1.1rem; }
+.rb-upload-content p { color: #94a3b8; font-size: 0.8rem; margin: 4px 0 16px; }
+
+/* Toast Notification Styles */
+.pc-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: #1e1e2e;
+  color: white;
+  padding: 12px 20px;
+  border-left: 4px solid #ef4444;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 10000;
+}
+
+/* --- 📱 MOBILE RESPONSIVENESS --- */
+
+/* =========================================
+   MOBILE RESUME BANNER OPTIMIZATION (Paste at bottom)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+  
+  /* 1. Allow Full Width on Mobile */
+  .rb-outer-card {
+    max-width: 100% !important; /* Don't restrict to 320px */
+    width: 100% !important;
+    margin-bottom: 20px !important;
+    padding: 16px !important; /* Reduce padding */
+    box-shadow: none !important; /* Remove heavy shadow on mobile for performance */
+    background-color: transparent !important; /* Optional: Blend better */
+    border: none !important; /* Cleaner look */
+  }
+
+  /* 2. Slim the Glass Box */
+  .rb-glass-inner {
+    padding: 15px !important;
+    backdrop-filter: blur(5px) !important; /* Reduce blur for battery saving */
+    background: rgba(26, 26, 36, 0.8) !important; /* Darker background for contrast */
+  }
+
+  /* 3. Header Adjustments */
+  .sb-top-row {
+    margin-bottom: 15px !important;
+  }
+  
+  .sb-section-title {
+    font-size: 1rem !important;
+  }
+
+  /* 4. Tighter Skill Rows */
+  .sb-skills-stack {
+    gap: 15px !important;
+  }
+
+  .sb-skill-name {
+    font-size: 0.8rem !important;
+  }
+  
+  .sb-prof-label {
+    font-size: 0.65rem !important;
+  }
+
+  /* 5. Make the Upload Button Finger-Friendly */
+  .rb-premium-btn {
+    padding: 14px !important;
+    font-size: 1rem !important; /* Larger text is easier to read */
+    margin-top: 15px !important;
+  }
+}

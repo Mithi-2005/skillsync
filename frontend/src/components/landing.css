@@ -1,0 +1,410 @@
+/* --- Global Landing Layout & Atmosphere --- */
+.landing-container {
+    min-height: 100vh;
+    background-color: #070b14;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    /* 🚀 FIX 1: Removed heavy SVG Noise Filter. Replaced with clean gradient */
+    background: radial-gradient(circle at top, #1a1f2e 0%, #070b14 100%);
+}
+
+/* --- The "Aurora" Background Effect --- */
+.landing-bg-effects {
+    position: fixed; /* 🚀 FIX 2: Fixed position prevents repainting on scroll */
+    top: 0; left: 0; width: 100%; height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px); /* Keep visually soft */
+    opacity: 0.4;
+    /* 🚀 FIX 3: Force GPU Acceleration */
+    will-change: transform;
+    transform: translate3d(0,0,0); 
+    animation: floatSlow 25s infinite alternate ease-in-out;
+}
+
+.orb-1 {
+    top: -10%; left: -10%; width: 600px; height: 600px;
+    background: radial-gradient(circle, #ef4444 0%, transparent 70%);
+}
+
+.orb-2 {
+    bottom: -20%; right: -10%; width: 800px; height: 800px;
+    background: radial-gradient(circle, #632424 0%, transparent 70%);
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    top: 40%; left: 30%; width: 400px; height: 400px;
+    background: radial-gradient(circle, #fca5a5 0%, transparent 70%);
+    opacity: 0.2;
+    animation-delay: -12s;
+}
+
+/* --- Navigation --- */
+.landing-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 100;
+    /* Optimized glass effect */
+    background: rgba(7, 11, 20, 0.7); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.landing-logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ffffff 20%, #ef4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.btn-login-glass {
+    /* 1. Sophisticated Background: Deep Red to subtle Crimson */
+    background: linear-gradient(180deg, rgba(220, 38, 38, 0.1) 0%, rgba(220, 38, 38, 0.2) 100%);
+    
+    /* 2. Frosted Blur */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* 3. The "premium" border: Thin, crisp, and slightly glowing */
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    
+    /* 4. Inner Light Ring (The secret sauce for "Rich" look) */
+    box-shadow: 
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1), /* Top subtle highlight */
+        0 4px 20px rgba(0, 0, 0, 0.5);            /* Drop shadow */
+
+    color: #fff;
+    padding: 10px 32px;
+    border-radius: 99px; /* Full pill shape */
+    font-weight: 600;
+    font-size: 0.96rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    
+    /* Smooth Transition */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-login-glass:hover {
+    /* Brighten background slightly but keep transparency */
+    background: linear-gradient(180deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.3) 100%);
+    
+    /* Brighter Border */
+    border-color: #ef4444;
+    
+    /* The "Neon" Glow Effect behind it */
+    box-shadow: 
+        0 0 20px rgba(239, 68, 68, 0.4),          /* Soft red glow */
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.2); /* Brighter inner highlight */
+        
+    transform: translateY(-2px);
+    color: #fff;
+}
+
+.btn-login-glass:active {
+    transform: translateY(0);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+}
+
+/* --- Hero Section --- */
+.landing-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 60px;
+    position: relative;
+    z-index: 1;
+    /* 🚀 FIX 4: Improve compositing for 3D elements */
+    transform-style: preserve-3d;
+}
+
+.hero-badge {
+    background: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    letter-spacing: 2px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.hero-title {
+    font-size: 5.5rem;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 32px;
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    /* 🚀 FIX 5: Remove text-shadow for better performance */
+}
+
+.hero-title span {
+    background: linear-gradient(to right, #ffffff 30%, #fca5a5, #ef4444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+}
+
+.hero-subtitle {
+    font-size: 1.35rem;
+    color: #cbd5e1;
+    max-width: 680px;
+    margin-bottom: 48px;
+    line-height: 1.6;
+    font-weight: 400;
+    animation: fadeInUp 0.8s ease-out 0.4s backwards;
+}
+
+/* Premium Button */
+.btn-primary-rich {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
+    color: white;
+    padding: 18px 48px;
+    border-radius: 50px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px -5px rgba(239, 68, 68, 0.5);
+    transition: transform 0.2s;
+    animation: fadeInUp 0.8s ease-out 0.6s backwards;
+}
+
+.btn-primary-rich:hover {
+    transform: translateY(-5px);
+}
+
+/* --- Visual Container --- */
+.hero-visual-container {
+    margin-top: 80px;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    perspective: 1000px; /* 3D context */
+    animation: fadeInSlow 1.5s ease-out 0.8s backwards;
+    /* 🚀 FIX 6: Isolate composite layer */
+    will-change: transform;
+}
+
+.glass-platform-main {
+    position: absolute;
+    width: 70%; height: 250px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotateX(20deg) rotateY(-15deg);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* 🚀 FIX 7: Reduced blur radius for performance */
+    backdrop-filter: blur(5px); 
+    border-radius: 24px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+}
+
+.connection-line-glow {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ef4444, transparent);
+    opacity: 0.7;
+}
+.cl-1 { width: 80%; top: 30%; left: 10%; animation: scanLine 4s infinite linear; }
+.cl-2 { width: 60%; top: 60%; left: 20%; animation: scanLine 6s infinite linear reverse; }
+
+.floating-card {
+    position: absolute;
+    background: rgba(26, 26, 36, 0.8); /* Less transparent = faster render */
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; color: #ef4444;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    will-change: transform;
+    animation: floatCard 8s infinite ease-in-out alternate;
+}
+
+.fc-1 { width: 120px; height: 60px; top: 20%; left: 10%; transform: rotateZ(-5deg); z-index: 2;}
+.fc-2 { width: 100px; height: 80px; bottom: 10%; right: 15%; transform: rotateZ(5deg); z-index: 3; animation-delay: -2s;}
+
+/* --- Features Section --- */
+.features-section {
+    padding: 100px 20px 160px;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 40px;
+}
+
+.feature-card-premium {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 50px 40px;
+    border-radius: 32px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    /* 🚀 FIX 8: Removed backdrop-filter on cards */
+}
+
+.feature-card-premium:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.feature-icon-box {
+    font-size: 3rem;
+    margin-bottom: 24px;
+    display: inline-block;
+}
+
+.feature-card-premium h3 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: white;
+}
+
+.feature-card-premium p {
+    color: #94a3b8;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+/* --- Footer --- */
+.landing-footer {
+    text-align: center;
+    padding: 60px 20px;
+    color: #64748b;
+    font-size: 0.9rem;
+    background: #070b14;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Animations */
+@keyframes floatSlow {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(50px, 50px, 0); }
+}
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInSlow { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scanLine { 0% { transform: translateX(-100%); } 100% { transform: translateX(200%); } }
+@keyframes floatCard { 0% { transform: translateY(0) rotateZ(-5deg); } 100% { transform: translateY(-20px) rotateZ(5deg); } }
+
+/* Mobile */
+/* =========================================
+   MOBILE & TABLET OPTIMIZATION PATCH
+   (Replace your bottom media query with this)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+
+  /* 1. Global Safety */
+  .landing-container {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* 2. Compact Navigation */
+  .landing-nav {
+    padding: 12px 20px; /* Reduce padding */
+    background: rgba(7, 11, 20, 0.95); /* Make nav darker for readability */
+  }
+  .landing-logo {
+    font-size: 1.4rem;
+  }
+  .btn-login-glass {
+    padding: 8px 20px;
+    font-size: 0.85rem; /* Smaller button text */
+  }
+
+  /* 3. Hero Section - The "De-Congestant" */
+  .landing-hero {
+    padding-top: 100px; /* Less top space */
+    padding-bottom: 40px;
+    min-height: auto; /* Allow it to shrink */
+  }
+
+  .hero-badge {
+    margin-bottom: 16px;
+    font-size: 0.7rem;
+    padding: 6px 16px;
+  }
+
+  /* Drastically reduce font size for mobile so it doesn't wrap 4 times */
+  .hero-title {
+    font-size: 2.5rem !important; 
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem !important;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    padding: 0 10px; /* Add internal breathing room */
+  }
+
+  .btn-primary-rich {
+    width: 100%; /* Full width button is easier to tap */
+    padding: 16px 12px;
+    font-size: 1.1rem;
+  }
+
+  /* 4. Tame the 3D Visuals */
+  /* The 3D elements often overlap text on mobile. We shrink them. */
+  .hero-visual-container {
+    margin-top: 40px;
+    height: 280px; /* Force it shorter */
+    transform: scale(0.65); /* Shrink the whole 3D group */
+    transform-origin: center top; 
+    margin-bottom: -50px; /* Pull the next section up to reduce gaps */
+  }
+
+  /* 5. Stack Features Cleanly */
+  .features-section {
+    padding: 40px 20px 80px;
+  }
+  
+  .features-grid {
+    /* Force single column. The original 'minmax(340px)' is too wide for some phones */
+    grid-template-columns: 1fr !important; 
+    gap: 20px;
+  }
+
+  .feature-card-premium {
+    padding: 30px 24px; /* Less internal padding */
+    text-align: left; /* Easier to read on mobile than center */
+  }
+  
+  .feature-card-premium h3 {
+    font-size: 1.4rem;
+  }
+}

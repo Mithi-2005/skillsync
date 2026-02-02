@@ -1,0 +1,424 @@
+/* --- Page Layout --- */
+.room-container {
+  max-width: 1280px; /* Increased width to fit Chat + Dashboard */
+  margin: 0 auto;
+  padding: 30px 20px;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* 🟢 Split Grid Layout */
+.room-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px; /* Left: Flexible, Right: Fixed 380px */
+  gap: 24px;
+  align-items: start;
+}
+
+/* Left Panel (Room Details & Admin) */
+.room-left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Right Panel (Sticky Chat) */
+.room-right-panel {
+  position: sticky;
+  top: 24px; /* Sticks to top while scrolling */
+  height: fit-content;
+  z-index: 10;
+}
+
+/* --- Cards --- */
+.room-card {
+  background-color: #1e1e2e;
+  border: 1px solid #2d2d3f;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Section */
+.rc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.rc-header h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.8rem;
+}
+
+.status-pill {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.status-pill.open { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.status-pill.closed { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+.room-description {
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Skills Section */
+.room-skills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.skill-label {
+  color: #cbd5e1;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.rc-skill-tag {
+  background-color: #0f172a;
+  color: #e2e8f0;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  font-size: 0.85rem;
+}
+
+/* --- Restricted Access --- */
+.restricted-card {
+  text-align: center;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lock-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+/* --- Members List --- */
+.member-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background-color: #15151e;
+  border-radius: 8px;
+  border: 1px solid #2d2d3f;
+}
+
+.member-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #2d2d3f;
+}
+
+.member-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.member-name {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.member-role {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+/* --- Admin: Room Code --- */
+.code-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  color: #cbd5e1;
+}
+
+.the-code {
+  background-color: #0f172a;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: monospace;
+  color: #ef4444; /* Crimson Code */
+  border: 1px dashed #ef4444;
+  letter-spacing: 1px;
+}
+
+/* --- Applications --- */
+.applications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.application-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #15151e;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #2d2d3f;
+}
+
+.app-msg {
+  margin: 2px 0 0 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.application-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* --- AI Recommendations --- */
+.loading-card {
+  text-align: center;
+  padding: 40px;
+}
+.spinner-sm {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(239, 68, 68, 0.3);
+  border-top-color: #ef4444;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 10px;
+}
+
+.small-text { font-size: 0.85rem; margin-top: 4px; }
+
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.recommendation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #15151e;
+  border: 1px solid #2d2d3f;
+  padding: 16px;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.recommendation-item:hover {
+  border-color: #ef4444;
+}
+
+.rec-left {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.rec-left img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.rec-name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.match-badge {
+  background: linear-gradient(90deg, #f59e0b, #ef4444); /* Amber to Red */
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.skill-tag-mini {
+  display: inline-block;
+  background-color: #1e293b;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 4px;
+  margin-top: 4px;
+}
+
+/* --- Buttons --- */
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.btn-sm { padding: 6px 12px; font-size: 0.85rem; }
+
+.btn-primary {
+  background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+  color: white;
+}
+.btn-primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4); }
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #ef4444;
+  color: #ef4444;
+}
+.btn-outline:hover { background: rgba(239, 68, 68, 0.1); }
+
+.btn-secondary { background: #334155; color: #94a3b8; cursor: default; }
+.btn-warning { background: #f59e0b; color: white; cursor: default; }
+.btn-danger { background: #ef4444; color: white; cursor: default; }
+.btn-success { background: #10b981; color: white; cursor: default; }
+
+/* --- Toast --- */
+.rc-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  padding: 14px 24px;
+  background-color: #1e1e2e;
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-size: 0.95rem;
+  font-weight: 500;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-left: 4px solid;
+}
+.rc-toast.success { border-left-color: #10b981; }
+.rc-toast.error { border-left-color: #ef4444; }
+.rc-toast.default { border-left-color: #64748b; }
+
+@keyframes slideIn { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- 📱 MOBILE RESPONSIVENESS --- */
+
+/* =========================================
+   MOBILE ROOM DASHBOARD OPTIMIZATION (Paste at bottom)
+   ========================================= */
+
+@media screen and (max-width: 950px) {
+
+  /* 1. BREAK THE GRID (Critical Fix) */
+  /* This forces the layout to be 1 column instead of 2 */
+  .room-dashboard-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* 2. Chat Window Positioning */
+  /* Remove sticky behavior on mobile so it doesn't float over content */
+  .room-right-panel {
+    position: relative !important; 
+    top: 0 !important;
+    width: 100% !important;
+    order: 2 !important; /* Push Chat to the bottom */
+    height: 600px !important; /* Give chat a fixed height on mobile */
+  }
+
+  /* 3. Room Details (Left Panel) */
+  .room-left-panel {
+    order: 1 !important; /* Keep details on top */
+    width: 100% !important;
+  }
+
+  /* 4. Container Padding */
+  .room-container {
+    padding: 15px 10px !important;
+  }
+
+  /* 5. Header Adjustments */
+  .rc-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .rc-header h2 {
+    font-size: 1.5rem !important;
+  }
+
+  /* 6. Admin Code Box */
+  .code-box {
+    font-size: 0.9rem !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* 7. Stack List Items (Applications & Recommendations) */
+  .application-item, 
+  .recommendation-item {
+    flex-direction: column !important;
+    align-items: stretch !important; /* Full width children */
+    gap: 15px !important;
+    padding: 16px !important;
+  }
+
+  .rec-left {
+    width: 100% !important;
+    margin-bottom: 5px !important;
+  }
+
+  .application-actions, 
+  .recommendation-item button {
+    width: 100% !important;
+    display: flex !important;
+    gap: 10px !important;
+  }
+
+  /* 8. Make Buttons Big for Touch */
+  .btn {
+    flex: 1 !important; /* Buttons share space equally */
+    padding: 12px !important;
+    justify-content: center !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* 9. Toast Notification Center */
+  .rc-toast {
+    width: 90% !important;
+    right: 5% !important;
+    left: 5% !important;
+    top: 20px !important;
+    justify-content: center !important;
+  }
+}

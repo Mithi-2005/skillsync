@@ -1,0 +1,395 @@
+/* --- 1. Main Layout & Sticky Control --- */
+.dashboard-layout {
+    /* 🟢 Transparent so global background shows */
+    background: transparent;
+    
+    display: grid;
+    grid-template-columns: 1fr 320px; 
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 40px 20px;
+    align-items: start; /* Essential for sticky sidebar to work */
+}
+
+.sidebar-section {
+    position: sticky;
+    top: 90px; /* Aligned with your header height */
+    z-index: 5;
+}
+
+/* --- 2. LinkedIn-Style Completion Banner --- */
+.profile-completion-banner {
+    /* 🟢 Updated to Glass style */
+    background: rgba(26, 26, 36, 0.6);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: slideDown 0.5s ease;
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.banner-icon {
+    font-size: 2rem;
+    background: rgba(239, 68, 68, 0.1);
+    width: 50px; height: 50px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 12px;
+}
+
+.banner-text strong {
+    color: #fff; font-size: 1rem; display: block; margin-bottom: 4px;
+}
+
+.banner-text p {
+    color: #94a3b8; font-size: 0.85rem; margin: 0;
+}
+
+.banner-cta-btn {
+    background: #ef4444; 
+    color: #fff; 
+    border: none;
+    padding: 10px 20px; 
+    border-radius: 10px;
+    font-weight: 700; 
+    cursor: pointer; 
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.banner-cta-btn:hover {
+    background: #dc2626;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+    transform: translateY(-2px);
+}
+
+/* --- 3. Search Bar --- */
+.search-section-wrapper { margin-bottom: 25px; }
+
+.search-glass-container {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2px 16px;
+    transition: 0.3s;
+}
+
+.search-glass-container:focus-within {
+    border-color: #ef4444;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.1);
+}
+
+.classy-search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 14px 0;
+    font-size: 0.95rem;
+}
+
+.search-clear-btn {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+/* --- 4. Filter Track & Dual Dropdowns --- */
+.modern-filter-container {
+    margin-bottom: 30px;
+    position: sticky;
+    top: 0; 
+    z-index: 100;
+    padding: 10px 0;
+}
+
+.filter-glass-track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* 🟢 More transparent glass */
+    background: rgba(26, 26, 36, 0.6);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    padding: 8px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.filter-group { display: flex; gap: 4px; }
+
+.actions-group {
+    display: flex;
+    gap: 12px;
+}
+
+.modern-filter-item {
+    position: relative;
+    background: transparent; border: none;
+    color: #94a3b8; padding: 10px 20px;
+    font-size: 0.85rem; font-weight: 600; cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.modern-filter-item.active { color: #fff; background: rgba(239, 68, 68, 0.08); border-radius: 10px; }
+
+.active-dot {
+    position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 4px; background: #ef4444; border-radius: 50%;
+    box-shadow: 0 0 10px #ef4444; animation: dotPulse 2s infinite;
+}
+
+/* --- 5. Custom Dropdown UI --- */
+.custom-sort-wrapper { position: relative; min-width: 150px; }
+
+.sort-trigger {
+    width: 100%; background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e1; padding: 10px 16px; border-radius: 10px;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; font-size: 0.85rem;
+}
+
+.sort-trigger:hover, .sort-trigger.active { border-color: #ef4444; color: #fff; }
+
+.sort-dropdown-menu {
+    position: absolute; top: calc(100% + 8px); right: 0; width: 100%;
+    /* 🟢 Glassy Dropdown */
+    background: rgba(26, 26, 36, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid #2d2d3f;
+    border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.6); 
+    overflow: hidden; z-index: 1000;
+    animation: dropIn 0.2s ease-out;
+}
+
+.sort-option { padding: 12px 16px; color: #94a3b8; cursor: pointer; transition: 0.2s; }
+.sort-option:hover { background: rgba(239, 68, 68, 0.1); color: #fff; }
+.sort-option.selected { color: #ef4444; font-weight: 700; background: rgba(239, 68, 68, 0.02); }
+
+/* --- 6. Post Card & Campus Badge --- */
+.posts-container { display: flex; flex-direction: column; gap: 30px; animation: fadeInUp 0.8s ease; }
+
+.post-card {
+    position: relative; /* Essential for Badge positioning */
+    
+    /* 🟢 PREMIUM GLASS EFFECT */
+    background: rgba(26, 26, 36, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 24px;
+    transition: 0.3s;
+}
+
+.post-card:hover {
+    border-color: rgba(239, 68, 68, 0.4);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.campus-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.badge-text {
+    color: #ef4444;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- 7. Empty State & FAB --- */
+.empty-state-container {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 80px 20px; background: rgba(255, 255, 255, 0.01);
+    border-radius: 24px; border: 1px dashed rgba(255, 255, 255, 0.05);
+}
+
+.empty-state-reset {
+    background: transparent; border: 1px solid #ef4444;
+    color: #ef4444; padding: 10px 24px; border-radius: 10px;
+    cursor: pointer; margin-top: 15px; transition: 0.3s;
+}
+
+.empty-state-reset:hover { background: #ef4444; color: #fff; }
+
+.fab-btn {
+    position: fixed; bottom: 40px; right: 40px;
+    width: 65px; height: 65px; border-radius: 50%;
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    color: white; border: none; font-size: 24px; cursor: pointer;
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+}
+
+.fab-btn:hover { transform: scale(1.1) rotate(90deg); }
+
+.feed-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.feed-count {
+    font-size: 16px;
+    color: #d8d8d8;
+}
+
+/* --- 8. Animations --- */
+@keyframes dotPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.5; } }
+@keyframes dropIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- 9. 📱 MOBILE RESPONSIVENESS --- */
+
+/* Tablets (Max-width: 1000px) */
+/* =========================================
+   MOBILE DASHBOARD OPTIMIZATION PATCH
+   (Replace your bottom media queries with this)
+   ========================================= */
+
+@media screen and (max-width: 900px) {
+  
+  /* 1. Layout Reset */
+  .dashboard-layout {
+    display: block; /* Remove Grid constraints */
+    padding: 20px 12px; /* Slimmer outer padding */
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  /* 2. Hide Sidebar (Save space) */
+  .sidebar-section {
+    display: none; 
+  }
+
+  /* 3. Fix Profile Completion Banner */
+  .profile-completion-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 15px;
+  }
+  
+  .banner-content {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .banner-icon {
+    width: 40px; height: 40px; font-size: 1.5rem; /* Smaller icon */
+  }
+
+  .banner-cta-btn {
+    width: 100%; /* Full width button is easier to tap */
+    text-align: center;
+    padding: 12px;
+  }
+
+  /* 4. Fix Search Bar */
+  .search-glass-container {
+    padding: 6px 16px;
+  }
+  
+  .classy-search-input {
+    font-size: 16px; /* Prevents iPhone zoom */
+  }
+
+  /* 5. Scrollable Filters (Instagram style) */
+  .filter-glass-track {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+    gap: 15px;
+  }
+
+  .filter-group {
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    display: flex;
+    gap: 8px;
+    padding-bottom: 5px;
+    /* Hide scrollbar for cleaner look */
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+  }
+  .filter-group::-webkit-scrollbar { display: none; }
+
+  .modern-filter-item {
+    white-space: nowrap; /* Don't wrap text */
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    background: rgba(255,255,255,0.05); /* Slight BG for visibility */
+    border-radius: 20px;
+  }
+
+  .actions-group {
+    justify-content: space-between;
+  }
+
+  /* 6. De-Congest Post Cards */
+  .posts-container {
+    gap: 15px;
+  }
+
+  .post-card {
+    padding: 16px; /* Reduce padding from 24px */
+    border-radius: 16px;
+  }
+
+  /* Move the badge so it doesn't overlap title */
+  .campus-badge {
+    position: relative; /* Stop floating */
+    top: auto; 
+    right: auto;
+    display: inline-flex;
+    margin-bottom: 10px; /* Put it ABOVE the content */
+    align-self: flex-start;
+    font-size: 0.65rem;
+  }
+
+  /* 7. Fix Floating Button */
+  .fab-btn {
+    width: 50px; height: 50px;
+    bottom: 25px; right: 20px;
+    font-size: 20px;
+  }
+}
